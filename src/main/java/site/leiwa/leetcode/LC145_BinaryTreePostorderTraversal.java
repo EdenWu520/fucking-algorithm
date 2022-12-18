@@ -1,8 +1,10 @@
 package site.leiwa.leetcode;
 
-import com.sun.source.tree.Tree;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @desc: todo
@@ -21,7 +23,6 @@ public class LC145_BinaryTreePostorderTraversal {
         System.out.println(ans1);
     }
 
-
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         postorder(root, ans);
@@ -37,13 +38,12 @@ public class LC145_BinaryTreePostorderTraversal {
         ans.add(root.val);
     }
 
-
     public List<Integer> postorderTraversal1(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         Deque<TreeNode> stack = new LinkedList<>();
         TreeNode node = root;
         while (!stack.isEmpty() || node != null) {
-            while (node!= null) {
+            while (node != null) {
                 ans.add(node.val);
                 stack.push(node);
                 node = node.right;

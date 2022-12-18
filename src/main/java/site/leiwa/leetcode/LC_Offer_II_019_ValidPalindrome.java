@@ -1,6 +1,5 @@
 package site.leiwa.leetcode;
 
-
 // 剑指 Offer II 018
 
 import java.util.Optional;
@@ -19,7 +18,6 @@ public class LC_Offer_II_019_ValidPalindrome {
         String s3 = "abc";
         System.out.println(new LC_Offer_II_019_ValidPalindrome().validPalindrome1(s2));
     }
-
 
     public boolean validPalindrome(String str) {
         int start = 0;
@@ -64,11 +62,12 @@ public class LC_Offer_II_019_ValidPalindrome {
 
     public boolean validPalindrome1(String str) {
         Optional<Pair> pair = findDifferent(str);
-        if (pair.isEmpty()){
+        if (pair.isPresent()) {
             return true;
         }
         Pair pair1 = pair.get();
-        return isPalindrome(str.substring(pair1.left, pair1.right)) || isPalindrome(str.substring(pair1.left + 1, pair1.right + 1));
+        return isPalindrome(str.substring(pair1.left, pair1.right))
+            || isPalindrome(str.substring(pair1.left + 1, pair1.right + 1));
     }
 
     private Optional<Pair> findDifferent(String str) {
@@ -81,7 +80,6 @@ public class LC_Offer_II_019_ValidPalindrome {
         }
         return Optional.empty();
     }
-
 
     private boolean isPalindrome(String str) {
         for (int i = 0, j = str.length() - 1; i < j; i++, j--) {
